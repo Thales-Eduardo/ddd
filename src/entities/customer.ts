@@ -1,6 +1,9 @@
 import { Address } from "./address";
 
 export class Customer {
+  Address(arg0: number, arg1: string, arg2: string, arg3: string) {
+    throw new Error("Method not implemented.");
+  }
   private _id: string;
   private _name: string;
   private _address?: Address;
