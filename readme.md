@@ -1,0 +1,1 @@
+![agregate](./docs/agregados.png)
