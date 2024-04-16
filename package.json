@@ -17,6 +17,7 @@
     "typescript": "^5.4.4"
   },
   "dependencies": {
+    "pg": "^8.11.5",
     "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.2",
     "sequelize-typescript": "^2.1.6",
