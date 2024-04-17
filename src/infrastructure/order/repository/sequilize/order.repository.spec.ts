@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { Sequelize } from "sequelize-typescript";
 import { Order } from "../../../../domain/checkout/entities/order";
 import { OrderItem } from "../../../../domain/checkout/entities/order_item";
@@ -44,24 +45,30 @@ describe("Order repository test", () => {
 
   it("should create a new order", async () => {
     const customerRepository = new CustomerRepository();
-    const customer = new Customer("123", "Customer 1");
+
+    const CustomerId = randomUUID();
+    const ProductId = randomUUID();
+    const orderItemId = randomUUID();
+    const OrderId = randomUUID();
+
+    const customer = new Customer(CustomerId, "Customer 1");
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
     customer.changeAddress(address);
     await customerRepository.create(customer);
 
     const productRepository = new ProductRepository();
-    const product = new Product("123", "Product 1", 10);
+    const product = new Product(ProductId, "Product 1", 10);
     await productRepository.create(product);
 
     const orderItem = new OrderItem(
-      "1",
+      orderItemId,
       product.name,
       product.price,
       product.id,
       2
     );
 
-    const order = new Order("123", "123", [orderItem]);
+    const order = new Order(OrderId, CustomerId, [orderItem]);
 
     const orderRepository = new OrderRepository();
     await orderRepository.create(order);
@@ -72,8 +79,8 @@ describe("Order repository test", () => {
     });
 
     expect(orderModel.toJSON()).toStrictEqual({
-      id: "123",
-      customer_id: "123",
+      id: OrderId,
+      customer_id: CustomerId,
       total: order.total(),
       items: [
         {
@@ -81,8 +88,8 @@ describe("Order repository test", () => {
           name: orderItem.name,
           price: orderItem.price,
           quantity: orderItem.quantity,
-          order_id: "123",
-          product_id: "123",
+          order_id: OrderId,
+          product_id: ProductId,
         },
       ],
     });
