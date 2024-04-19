@@ -24,7 +24,7 @@
     "uuid": "^9.0.1"
   },
   "scripts": {
-    "test": "npm run tsc -- --noEmit && jest",
+    "test": "npm run tsc -- --noEmit && jest --runInBand",
     "tsc": "tsc"
   }
 }

@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { Sequelize } from "sequelize-typescript";
 import { Customer } from "../../../../domain/customer/entities/customer";
 import { Address } from "../../../../domain/customer/value-object/address";
@@ -31,17 +32,19 @@ describe("Customer repository test", () => {
 
   it("should create a customer", async () => {
     const customerRepository = new CustomerRepository();
-    const customer = new Customer("123", "Customer 1");
+    const customer_id = randomUUID();
+
+    const customer = new Customer(customer_id, "Customer 1");
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
     customer.Address = address;
     await customerRepository.create(customer);
 
     const customerModel: CustomerModel | any = await CustomerModel.findOne({
-      where: { id: "123" },
+      where: { id: customer_id },
     });
 
     expect(customerModel.toJSON()).toStrictEqual({
-      id: "123",
+      id: customer_id,
       name: customer.name,
       active: customer.isActive(),
       rewardPoints: customer.rewardPoints,
@@ -54,7 +57,9 @@ describe("Customer repository test", () => {
 
   it("should update a customer", async () => {
     const customerRepository = new CustomerRepository();
-    const customer = new Customer("123", "Customer 1");
+    const customer_id = randomUUID();
+
+    const customer = new Customer(customer_id, "Customer 1");
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
     customer.Address = address;
     await customerRepository.create(customer);
@@ -62,11 +67,11 @@ describe("Customer repository test", () => {
     customer.changeName("Customer 2");
     await customerRepository.update(customer);
     const customerModel: CustomerModel | any = await CustomerModel.findOne({
-      where: { id: "123" },
+      where: { id: customer_id },
     });
 
     expect(customerModel.toJSON()).toStrictEqual({
-      id: "123",
+      id: customer_id,
       name: customer.name,
       active: customer.isActive(),
       rewardPoints: customer.rewardPoints,
@@ -79,7 +84,9 @@ describe("Customer repository test", () => {
 
   it("should find a customer", async () => {
     const customerRepository = new CustomerRepository();
-    const customer = new Customer("123", "Customer 1");
+    const customer_id = randomUUID();
+
+    const customer = new Customer(customer_id, "Customer 1");
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
     customer.Address = address;
     await customerRepository.create(customer);
@@ -99,13 +106,16 @@ describe("Customer repository test", () => {
 
   it("should find all customers", async () => {
     const customerRepository = new CustomerRepository();
-    const customer1 = new Customer("123", "Customer 1");
+    const customer_id1 = randomUUID();
+
+    const customer1 = new Customer(customer_id1, "Customer 1");
     const address1 = new Address("Street 1", 1, "Zipcode 1", "City 1");
     customer1.Address = address1;
     customer1.addRewardPoints(10);
     customer1.activate();
 
-    const customer2 = new Customer("456", "Customer 2");
+    const customer_id2 = randomUUID();
+    const customer2 = new Customer(customer_id2, "Customer 2");
     const address2 = new Address("Street 2", 2, "Zipcode 2", "City 2");
     customer2.Address = address2;
     customer2.addRewardPoints(20);
