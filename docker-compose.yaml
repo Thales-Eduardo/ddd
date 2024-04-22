@@ -13,11 +13,3 @@ services:
       - POSTGRES_DB=ddd-fullcycle
     volumes:
       - .:/data/postgres
-  app:
-    build: .
-    container_name: node
-    restart: always
-    volumes:
-      - .:/usr/app
-    depends_on:
-      - postgres_bd
