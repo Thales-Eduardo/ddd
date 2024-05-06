@@ -18,9 +18,15 @@ describe("Order repository test", () => {
 
   beforeEach(async () => {
     sequelize = new Sequelize({
-      dialect: "sqlite",
-      storage: ":memory:",
-      logging: false,
+      dialect: "postgres",
+      host: "localhost",
+      username: "postgres",
+      password: "docker",
+      database: "ddd-fullcycle",
+      port: 5432,
+      define: {
+        timestamps: true,
+      },
       sync: { force: true },
     });
 
