@@ -66,15 +66,15 @@ describe("Customer event handler unit test", () => {
     };
     eventHandler.handle(eventData);
 
-    eventDispatcher.register("CustomerUpdateCreatedEvent", eventHandler);
+    eventDispatcher.register("CustomerUpdatedEvent", eventHandler);
     expect(
-      eventDispatcher.getEventHandlers["CustomerUpdateCreatedEvent"]
+      eventDispatcher.getEventHandlers["CustomerUpdatedEvent"]
     ).toBeDefined();
     expect(
-      eventDispatcher.getEventHandlers["CustomerUpdateCreatedEvent"].length
+      eventDispatcher.getEventHandlers["CustomerUpdatedEvent"].length
     ).toBe(1);
     expect(
-      eventDispatcher.getEventHandlers["CustomerUpdateCreatedEvent"][0]
+      eventDispatcher.getEventHandlers["CustomerUpdatedEvent"][0]
     ).toMatchObject(eventHandler);
   });
 });
