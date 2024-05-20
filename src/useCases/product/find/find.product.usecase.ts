@@ -7,8 +7,8 @@ import {
 export class FindProductUseCase {
   private productRepository: ProductRepositoryInterface;
 
-  constructor(customerRepository: ProductRepositoryInterface) {
-    this.productRepository = customerRepository;
+  constructor(productRepository: ProductRepositoryInterface) {
+    this.productRepository = productRepository;
   }
 
   async execute(input: InputFindProductDTOs): Promise<OutputFindProductDTOs> {

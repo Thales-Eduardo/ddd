@@ -9,8 +9,8 @@ import {
 export class CreateProductUseCase {
   private productRepositoryInterface: ProductRepositoryInterface;
 
-  constructor(customerRepository: ProductRepositoryInterface) {
-    this.productRepositoryInterface = customerRepository;
+  constructor(productRepository: ProductRepositoryInterface) {
+    this.productRepositoryInterface = productRepository;
   }
 
   async execute(
