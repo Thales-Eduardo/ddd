@@ -19,6 +19,10 @@
     "typescript": "^5.4.4"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^7.1.0",
     "pg": "^8.11.5",
     "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.2",
@@ -29,6 +33,7 @@
   "scripts": {
     "test": "npm run tsc -- --noEmit && jest",
     "tsc": "tsc",
-    "prepare": "husky"
+    "prepare": "husky",
+    "dev": "sh src/infrastructure/api/scripts/server.sh"
   }
 }
