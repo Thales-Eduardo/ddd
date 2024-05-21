@@ -1,4 +1,4 @@
- test -d dist && rm -rf dist && yarn tsc && \
-    node dist/infrastructure/api/server.js || \
-    yarn tsc && node dist/infrastructure/api/server.js
+ test -d build && rm -rf build && yarn tsc && \
+    node build/infrastructure/api/server.js || \
+    yarn tsc && node build/infrastructure/api/server.js
 
