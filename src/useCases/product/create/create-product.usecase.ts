@@ -17,7 +17,6 @@ export class CreateProductUseCase {
     input: InputCreateProductDTOs
   ): Promise<OutputCreateProductDTOs> {
     const res = ProductFactory.create(input.type, input.name, input.price);
-    console.log("res", res);
 
     const product = new Product(res.id, res.name, res.price);
 
