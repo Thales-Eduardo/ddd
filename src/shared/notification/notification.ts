@@ -3,7 +3,7 @@ export type NotificationErrorProps = {
   context: string;
 };
 
-export default class Notification {
+export class Notification {
   private errors: NotificationErrorProps[] = [];
 
   addError(error: NotificationErrorProps) {

@@ -1,4 +1,4 @@
-import Notification from "./notification";
+import { Notification } from "./notification";
 
 describe("Unit tests for notifications", () => {
   it("should create errors", () => {

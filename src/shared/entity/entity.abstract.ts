@@ -1,4 +1,4 @@
-import Notification from "../notification/notification";
+import { Notification } from "../notification/notification";
 
 export abstract class Entity {
   protected _id: string | undefined;
