@@ -6,6 +6,7 @@ import { router } from "./routes";
 
 import helmet from "helmet";
 import { Sequelize } from "sequelize-typescript";
+import { NotificationError } from "../../shared/notification/notification.error";
 import { CustomerModel } from "../customer/repository/sequelize/customer.model";
 import { ProductModel } from "../product/repository/sequelize/product.model";
 
@@ -17,8 +18,8 @@ app.use(cors());
 app.use(router);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  if (err instanceof AppErrors) {
-    return res.status(err.statusCode).json({
+  if (err instanceof NotificationError) {
+    return res.json({
       status: "error",
       message: err.message,
     });
@@ -31,16 +32,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     message: "Internal server error",
   });
 });
-
-export class AppErrors {
-  public readonly message: string;
-  public readonly statusCode: number;
-
-  constructor(message: string, statusCode = 400) {
-    this.message = message;
-    this.statusCode = statusCode;
-  }
-}
 
 export let sequelize: Sequelize;
 
