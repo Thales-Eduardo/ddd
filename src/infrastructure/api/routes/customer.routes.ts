@@ -2,6 +2,7 @@ import { Request, Response, Router } from "express";
 import { CreateCustomerUseCase } from "../../../useCases/customer/create/create.customer.usecase";
 import { ListCustomerUseCase } from "../../../useCases/customer/list/list.customer.usecase";
 import { CustomerRepository } from "../../customer/repository/sequelize/customer.repository";
+import { CustomerPresenter } from "../presenters/customer.presenter";
 
 export const CustomerRouter = Router();
 
@@ -31,5 +32,6 @@ CustomerRouter.get("/", async (req: Request, res: Response) => {
 
   res.format({
     json: async () => res.send(output),
+    xml: async () => res.send(CustomerPresenter.listXML(output)),
   });
 });
