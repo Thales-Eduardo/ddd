@@ -30,7 +30,8 @@
     "sequelize": "^6.37.2",
     "sequelize-typescript": "^2.1.6",
     "sqlite3": "^5.1.7",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "test": "npm run tsc -- --noEmit && jest",

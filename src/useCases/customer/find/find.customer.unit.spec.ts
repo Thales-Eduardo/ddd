@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { Customer } from "../../../domain/customer/entities/customer";
+import { Customer } from "../../../domain/customer/entities/Customer";
 import { Address } from "../../../domain/customer/value-object/address";
 import { FindCustomerUseCase } from "./find.customer.usecase";
 
