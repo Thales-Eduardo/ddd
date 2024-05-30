@@ -1,5 +1,5 @@
 import { Address } from "../value-object/address";
-import { Customer } from "./customer";
+import { Customer } from "./Customer";
 
 describe("Customer unit tests", () => {
   it("should throw error when id is empty", () => {
@@ -23,10 +23,8 @@ describe("Customer unit tests", () => {
   it("should change name", () => {
     // Arrange
     const customer = new Customer("123", "John");
-
     // Act
     customer.changeName("Jane");
-
     // Assert
     expect(customer.name).toBe("Jane");
   });

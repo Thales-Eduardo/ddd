@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { Sequelize } from "sequelize-typescript";
 import { Order } from "../../../../domain/checkout/entities/order";
 import { OrderItem } from "../../../../domain/checkout/entities/order_item";
-import { Customer } from "../../../../domain/customer/entities/customer";
+import { Customer } from "../../../../domain/customer/entities/Customer";
 import { Address } from "../../../../domain/customer/value-object/address";
 import { Product } from "../../../../domain/product/entities/product";
 import { CustomerModel } from "../../../customer/repository/sequelize/customer.model";

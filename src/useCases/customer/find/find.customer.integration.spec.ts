@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { Sequelize } from "sequelize-typescript";
-import { Customer } from "../../../domain/customer/entities/customer";
+import { Customer } from "../../../domain/customer/entities/Customer";
 import { Address } from "../../../domain/customer/value-object/address";
 import { CustomerModel } from "../../../infrastructure/customer/repository/sequelize/customer.model";
 import { CustomerRepository } from "../../../infrastructure/customer/repository/sequelize/customer.repository";
